@@ -33,14 +33,18 @@ export default {
       pullUpLoad: this.pullUpLoad
     });
     //监听滚动事件
-    this.scroll.on('scroll', (position) => {
-      this.$emit('scroll', position)
-    })
+    if (this.probeType === 2 || this.probeType === 3) {
+      this.scroll.on('scroll', (position) => {
+        this.$emit('scroll', position)
+      })
+    }
     //监听滚动上拉加载
-    this.scroll.on('pullingUp', () => {
-      this.$emit('pullingUp')
+    if (this.pullUpLoad) {
+      this.scroll.on('pullingUp', () => {
+        this.$emit('pullingUp')
 
-    })
+      })
+    }
   },
   methods: {
 

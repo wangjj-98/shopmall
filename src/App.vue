@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <tab-bar></tab-bar>
-    <keep-alive>
+    <tab-bar v-if=" !$route.name"></tab-bar>
+    <keep-alive exclude="Detail">
       <router-view />
     </keep-alive>
   </div>

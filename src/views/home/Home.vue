@@ -56,12 +56,16 @@
       </van-tabs>
       <!-- 商品展示 -->
       <van-grid :border="false" :column-num="2">
-        <van-grid-item v-for="(item,index) in goods[tabType].list" :key="index" :url="item.link">
+        <van-grid-item
+          v-for="(item,index) in goods[tabType].list"
+          :key="index"
+          @click="itemClick(item.iid)"
+        >
           <div class="goods">
             <van-image :src="item.show.img" @load="imageLoad" />
             <p>{{item.title.substring(0,14)+'...'}}</p>
             <div>
-              <span class="orgPrice">{{item.orgPrice}}</span>
+              <span class="orgPrice">{{'￥'+item.price}}</span>
               <span class="sale">{{item.sale+'人付款'}}</span>
             </div>
           </div>
@@ -80,6 +84,7 @@ import { getHomeMultidata, getHomeGoods } from 'network/home'
 import Scroll from 'components/common/scroll/Scroll'
 import BackTop from 'components/content/backTop'
 export default {
+  name: 'Home',
   data () {
     return {
       banners: [],
@@ -119,12 +124,15 @@ export default {
     getHomeGoods (type) {
       const page = this.goods[type].page + 1
       getHomeGoods(type, page).then(res => {
-        console.log(res);
         this.goods[type].list.push(...(res.data.list))
         this.goods[type].page += 1
         this.$refs.scroll.finishPullUp()
 
       })
+    },
+    //请求详情页数据
+    itemClick (id) {
+      this.$router.push('/detail/' + id)
     },
     //切换tab获取商品
     tabClick () {
