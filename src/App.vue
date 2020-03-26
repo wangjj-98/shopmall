@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <tab-bar v-if=" !$route.name"></tab-bar>
     <keep-alive exclude="Detail">
       <router-view />
     </keep-alive>
+    <tab-bar v-if=" !$route.name"></tab-bar>
   </div>
 </template>
 <script>

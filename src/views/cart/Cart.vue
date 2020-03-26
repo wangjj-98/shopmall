@@ -127,8 +127,17 @@ export default {
   position: relative;
   height: 100vh;
 }
+.van-nav-bar {
+  background-color: #ff5777;
+}
+.van-nav-bar__title,
+.van-nav-bar__text,
+.van-nav-bar .van-icon {
+  color: #fff;
+}
+
 .content {
-  height: calc(100% - 146px);
+  height: calc(100% - 156px);
 }
 .van-nav-bar {
   position: relative;
@@ -148,7 +157,7 @@ export default {
   justify-content: space-between;
 }
 .van-submit-bar {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   border-bottom: 1px solid #ccc;
 }
 </style>

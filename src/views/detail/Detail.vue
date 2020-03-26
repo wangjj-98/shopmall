@@ -103,7 +103,7 @@
               class="userShow"
               width="80"
               height="80"
-              :src="item"
+              v-lazy="item"
               v-for="(item,index) in commentInfo.images"
               :key="index"
             />
@@ -125,7 +125,7 @@
       <!-- 店铺详情 -->
       <div class="goodsDetail">
         <div v-for="(item,index) in detailImage" :key="index">
-          <img :src="index" v-for="index in item.list" :key="index" @load="imageLoad" />
+          <img v-lazy="index" v-for="index in item.list" :key="index" @load="imageLoad" />
         </div>
       </div>
       <!-- 推荐商品展示 -->
@@ -136,7 +136,7 @@
           @click="gridClick(item.item_id)"
         >
           <div class="goods">
-            <van-image :src="item.image" />
+            <van-image v-lazy="item.image" />
             <p>{{item.title.substring(0,14)+'...'}}</p>
             <div>
               <span class="orgPrice">{{item.discountPrice}}</span>
@@ -499,5 +499,8 @@ export default {
   right: 5px;
   bottom: 5px;
   font-size: 12px;
+}
+.van-goods-action {
+  bottom: 10px;
 }
 </style>

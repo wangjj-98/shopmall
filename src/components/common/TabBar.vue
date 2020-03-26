@@ -27,5 +27,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.van-tabbar {
+  bottom: 10px;
+}
 </style>

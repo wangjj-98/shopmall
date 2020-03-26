@@ -25,7 +25,7 @@
       <div class="swiper">
         <van-swipe :autoplay="3000" indicator-color="#fff">
           <van-swipe-item v-for="(item, index) in banners" :key="index" @click="jump(item.link)">
-            <img :src="item.image" @load="swiperLoad" />
+            <img v-lazy="item.image" @load="swiperLoad" />
           </van-swipe-item>
         </van-swipe>
       </div>
@@ -78,7 +78,7 @@
 
 <script>
 import {  NavBar, Swipe, SwipeItem,
-  Lazyload, Image, Tab, Tabs,
+  Image, Tab, Tabs,
   Sticky, Grid, GridItem} from 'vant'
 import { getHomeMultidata, getHomeGoods } from 'network/home'
 import Scroll from 'components/common/scroll/Scroll'
